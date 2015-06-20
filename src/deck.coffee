@@ -22,13 +22,13 @@ class Deck
   last: =>
     # Last drawn card
 
-    @discard[@discard.length-1] || null
+    @spent[@spent.length-1] || null
 
   shuffle: =>
     # Prepare cards
 
     @cards = []
-    @discard = []
+    @spent = []
 
     for i in [1..@opt.count]
       for suit in @SUITS
@@ -58,7 +58,7 @@ class Deck
     if i > -1
       card = @cards.splice(i, 1)[0] || null
     if card
-      @discard.push card
+      @spent.push card
     card
 
   _random: =>

@@ -14,7 +14,7 @@ Instantiate a new deck:
 var deck = new Deck();
 ```
 
-Pick a card and put it back:
+Pick any card and put it back:
 ```javascript
 deck.pick();
 #=> {suit: "diamonds", rank: "6"}
@@ -23,19 +23,31 @@ deck.pick();
 Draw a card:
 ```javascript
 deck.draw();
-#=> {suit: "hearts", rank: "ace"}
+#=> {suit: "clubs", rank: "10"}
 ```
 
-Review last drawn card:
+All cards left in the deck:
 ```javascript
-deck.last();
-#=> {suit: "hearts", rank: "ace"}
+deck.cards;
+#=> [{suit: "spades", rank: "ace"}...]
 ```
 
-Count cards left in deck:
+Number of cards left:
 ```javascript
 deck.count();
 #=> 51
+```
+
+Last drawn card:
+```javascript
+deck.last();
+#=> {suit: "clubs", rank: "10"}
+```
+
+All drawn cards:
+```javascript
+deck.spent;
+#=> [{suit: "clubs", rank: "10"}]
 ```
 
 Reset:
