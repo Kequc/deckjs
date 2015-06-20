@@ -1,7 +1,7 @@
 class Deck
 
-  VALUES: ['ace', 'king', 'queen', 'jack', '10', '9', '8', '7', '6', '5', '4', '3', '2']
-  SUITS:  ['spades', 'hearts', 'diamonds', 'clubs']
+  SUITS: ['spades', 'hearts', 'diamonds', 'clubs']
+  RANKS: ['ace', 'king', 'queen', 'jack', '10', '9', '8', '7', '6', '5', '4', '3', '2']
 
   constructor: (@opt={}) ->
     # Instantiate a new deck
@@ -19,6 +19,11 @@ class Deck
 
     @cards.length
 
+  last: =>
+    # Last drawn card
+
+    @discard[@discard.length-1] || null
+
   shuffle: =>
     # Prepare cards
 
@@ -27,15 +32,15 @@ class Deck
 
     for i in [1..@opt.count]
       for suit in @SUITS
-        for value in @VALUES
+        for rank in @RANKS
           @cards.push
             suit: suit
-            value: value
+            rank: rank
       for extra in @opt.extras
         unless extra.limit && i > extra.limit
           @cards.push
             suit: extra.suit
-            value: extra.value
+            rank: extra.rank
 
     true
 
@@ -64,3 +69,9 @@ class Deck
       Math.floor(Math.random() * count)
     else
       -1
+
+# Export
+if typeof module == "object" and typeof module.exports == "object"
+  module.exports = Deck
+else
+  window.Deck = Deck
