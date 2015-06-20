@@ -28,7 +28,7 @@ deck.draw();
 
 All cards left in the deck:
 ```javascript
-deck.cards();
+deck.cards;
 #=> [{suit: "spades", rank: "ace"}...]
 ```
 
@@ -46,7 +46,7 @@ deck.last();
 
 All drawn cards:
 ```javascript
-deck.spent();
+deck.spent;
 #=> [{suit: "clubs", rank: "10"}]
 ```
 
