@@ -6,7 +6,7 @@ class Deck
   constructor: (@opt={}) ->
     # Instantiate a new deck
 
-    @opt.extras ?= []
+    @opt.extend ?= []
 
     @opt.count ?= 1
     if @opt.count < 1
@@ -36,11 +36,11 @@ class Deck
           @cards.push
             suit: suit
             rank: rank
-      for extra in @opt.extras
-        unless extra.limit && i > extra.limit
+      for card in @opt.extend
+        unless card.limit and i > card.limit
           @cards.push
-            suit: extra.suit
-            rank: extra.rank
+            suit: card.suit
+            rank: card.rank
 
     true
 

@@ -14,13 +14,13 @@ Instantiate a new deck:
 var deck = new Deck();
 ```
 
-Pick a card:
+Pick a card and put it back:
 ```javascript
 deck.pick();
 #=> {suit: "diamonds", rank: "6"}
 ```
 
-Pick and discard a card:
+Draw a card:
 ```javascript
 deck.draw();
 #=> {suit: "hearts", rank: "ace"}
@@ -38,27 +38,37 @@ deck.count();
 #=> 51
 ```
 
+Reset:
+```javascript
+deck.shuffle();
+```
+
 ### Options
 
-Deck takes optional attributes:
+Deck takes an options attribute:
 ```javascript
 var deck = new Deck({
   count: 2,
-  extras: [
-    {
-      suit: "black",
-      rank: "joker"
-    },
-    {
-      suit: "red",
-      rank: "joker"
-    },
-    {
-      suit: "none",
-      rank: "blank",
-      limit: 1
-    }
+  extend: [
+    {rank: "joker", suit: "black"},
+    {rank: "joker", suit: "red"},
+    {rank: "blank", suit: "none", limit: 1}
   ]
 });
 ```
-Creates a deck from 2 packs of cards, includes two jokers from each pack, and one blank card.
+
+This deck has:
+
+* 52 cards from 2 decks.
+* 4 jokers.
+* 1 blank card.
+* A total of 109 cards.
+
+### Cards
+
+By default your deck will consist of 52 cards with the following suits and ranks:
+
+```
+spades hearts diamonds clubs
+ace king queen jack 10 9 8 7 6 5 4 3 2
+```
