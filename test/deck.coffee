@@ -86,3 +86,17 @@ describe 'deck.js', ->
           found[2]++
         true
       expect(found).to.eql([3,3,1])
+
+    it 'modifies the deck', ->
+      suits = ['spades', 'diamonds', 'clubs']
+      ranks = ['raccoon', '10', '9', '8', '7', '6', '5', '4', '3', '2']
+      deck = new Deck({
+        suits: suits
+        ranks: ranks
+      });
+      expect(deck.count()).to.equal(30)
+      for i in [1..30]
+        card = deck.draw()
+        expect(suits).to.contain(card.suit)
+        expect(ranks).to.contain(card.rank)
+        true

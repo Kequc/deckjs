@@ -73,3 +73,13 @@ By default your deck will consist of 52 cards with the following suits and ranks
 spades hearts diamonds clubs
 ace king queen jack 10 9 8 7 6 5 4 3 2
 ```
+
+Override if desired:
+```javascript
+var deck = new Deck({
+  suits: ["spades", "diamonds", "clubs"],
+  ranks: ["raccoon", "10", "9", "8", "7", "6", "5", "4", "3", "2"]
+});
+deck.count();
+#=> 30
+```

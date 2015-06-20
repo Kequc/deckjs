@@ -1,12 +1,12 @@
 class Deck
 
-  SUITS: ['spades', 'hearts', 'diamonds', 'clubs']
-  RANKS: ['ace', 'king', 'queen', 'jack', '10', '9', '8', '7', '6', '5', '4', '3', '2']
-
   constructor: (@opt={}) ->
     # Instantiate a new deck
 
     @opt.extend ?= []
+
+    @opt.suits ?= ['spades', 'hearts', 'diamonds', 'clubs']
+    @opt.ranks ?= ['ace', 'king', 'queen', 'jack', '10', '9', '8', '7', '6', '5', '4', '3', '2']
 
     @opt.multiply ?= 1
     if @opt.multiply < 1
@@ -20,8 +20,8 @@ class Deck
     @cards = []
 
     for i in [1..@opt.multiply]
-      for suit in @SUITS
-        for rank in @RANKS
+      for suit in @opt.suits
+        for rank in @opt.ranks
           @inlay
             suit: suit
             rank: rank
