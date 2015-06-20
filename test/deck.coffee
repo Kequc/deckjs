@@ -15,26 +15,29 @@ describe 'deck.js', ->
 
     it 'creates a deck', ->
       expect(deck.cards.length).to.equal(52)
-      expect(deck.spent.length).to.equal(0)
       expect(deck.cards[0]).to.eql({suit: "spades", rank: "ace"})
       expect(deck.cards[deck.cards.length-1]).to.eql({suit: "clubs", rank: "2"})
-
-    it 'picks a card', ->
-      card = deck.pick()
-      expect(card).to.have.all.keys('suit', 'rank')
-      expect(deck.cards).to.contain(card)
-      expect(deck.spent).to.not.contain(card)
 
     it 'draws a card', ->
       for i in [1..52]
         card = deck.draw()
         expect(card).to.have.all.keys('suit', 'rank')
         expect(deck.cards).to.not.contain(card)
-        expect(deck.spent).to.contain(card)
         true
       expect(deck.draw()).to.be.null
       expect(deck.cards.length).to.equal(0)
-      expect(deck.spent.length).to.equal(52)
+
+    it 'inlays a card', ->
+      card = deck.draw()
+      expect(deck.cards).to.not.contain(card)
+      expect(deck.cards.length).to.equal(51)
+      deck.inlay(card)
+      expect(deck.cards).to.contain(card)
+      expect(deck.cards.length).to.equal(52)
+      card = {suit: "spades", rank: "ace"}
+      deck.inlay(card)
+      expect(deck.cards).to.contain(card)
+      expect(deck.cards.length).to.equal(53)
 
     it 'counts cards', ->
       for i in [52..1]
@@ -48,12 +51,9 @@ describe 'deck.js', ->
     it 'shuffles', ->
       card = deck.draw()
       expect(deck.cards.length).to.equal(51)
-      expect(deck.spent.length).to.equal(1)
       deck.shuffle()
       expect(deck.cards.length).to.equal(52)
-      expect(deck.spent.length).to.equal(0)
       expect(deck.cards).to.contain(card)
-      expect(deck.spent).to.not.contain(card)
 
   describe 'advanced', ->
     it 'manages multiple decks', ->

@@ -2,7 +2,7 @@
   "name": "deckjs",
   "title": "Deckjs",
   "description": "A deck of cards",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "homepage": "https://github.com/Kequc/deckjs",
   "author": "Nathan Lunde-Berry",
   "repository": {

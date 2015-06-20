@@ -14,40 +14,22 @@ Instantiate a new deck:
 var deck = new Deck();
 ```
 
-Pick any card and put it back:
-```javascript
-deck.pick();
-#=> {suit: "diamonds", rank: "6"}
-```
-
 Draw a card:
 ```javascript
 deck.draw();
-#=> {suit: "clubs", rank: "10"}
+#=> { rank: "10", suit: "clubs" }
 ```
 
-All cards left in the deck:
+Cards not yet drawn:
 ```javascript
 deck.cards;
-#=> [{suit: "spades", rank: "ace"}...]
+#=> [ { rank: "ace", suit: "spades" }, etc. ]
 ```
 
-Number of cards left:
+Number:
 ```javascript
 deck.count();
 #=> 51
-```
-
-Last drawn card:
-```javascript
-deck.last();
-#=> {suit: "clubs", rank: "10"}
-```
-
-All drawn cards:
-```javascript
-deck.spent;
-#=> [{suit: "clubs", rank: "10"}]
 ```
 
 Reset:
@@ -55,16 +37,23 @@ Reset:
 deck.shuffle();
 ```
 
+Return a card to the deck so that it can be drawn again:
+```javascript
+var card = deck.draw();
+deck.inlay(card);
+#=> { rank: "6", suit: "hearts" }
+```
+
 ### Options
 
-Deck takes an options attribute:
+Deck accepts options:
 ```javascript
 var deck = new Deck({
   multiply: 2,
   extend: [
-    {rank: "joker", suit: "black"},
-    {rank: "joker", suit: "red"},
-    {rank: "blank", suit: "none", limit: 1}
+    { rank: "joker", suit: "black" },
+    { rank: "joker", suit: "red" },
+    { rank: "blank", suit: "none", limit: 1 }
   ]
 });
 ```

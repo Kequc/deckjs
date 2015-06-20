@@ -14,61 +14,48 @@ class Deck
 
     @shuffle()
 
+  shuffle: =>
+    # Prepare cards
+
+    @cards = []
+
+    for i in [1..@opt.multiply]
+      for suit in @SUITS
+        for rank in @RANKS
+          @inlay
+            suit: suit
+            rank: rank
+      for card in @opt.extend
+        unless card.limit and i > card.limit
+          @inlay card
+
+    true
+
   count: =>
     # How many cards are in the deck
 
     @cards.length
 
-  last: =>
-    # Last drawn card
-
-    @spent[@spent.length-1] || null
-
-  shuffle: =>
-    # Prepare cards
-
-    @cards = []
-    @spent = []
-
-    for i in [1..@opt.multiply]
-      for suit in @SUITS
-        for rank in @RANKS
-          @cards.push
-            suit: suit
-            rank: rank
-      for card in @opt.extend
-        unless card.limit and i > card.limit
-          @cards.push
-            suit: card.suit
-            rank: card.rank
-
-    true
-
-  pick: =>
-    # Pick a card
-
-    i = @_random()
-    @cards[i] || null
-
   draw: =>
     # Draw a card
 
-    i = @_random()
-    card = null
-    if i > -1
-      card = @cards.splice(i, 1)[0] || null
-    if card
-      @spent.push card
-    card
-
-  _random: =>
-    # Return a random index
-
     count = @count()
     if count > 0
-      Math.floor(Math.random() * count)
+      @cards.splice(Math.floor(Math.random() * count), 1)[0] || null
     else
-      -1
+      null
+
+  inlay: (card={}) =>
+    # Add card to deck
+
+    if card.suit and card.rank
+      card =
+        suit: card.suit
+        rank: card.rank
+      @cards.push card
+      card
+    else
+      false
 
 # Export
 if typeof module == "object" and typeof module.exports == "object"
