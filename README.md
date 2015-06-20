@@ -1,4 +1,6 @@
-# Deck.js
+# Deckjs
+
+<img src="https://raw.githubusercontent.com/Kequc/deckjs/master/images/cards.jpg" alt="Cards" width="300" height="225" />
 
 ### Usage
 
