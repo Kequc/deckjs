@@ -60,7 +60,7 @@ deck.shuffle();
 Deck takes an options attribute:
 ```javascript
 var deck = new Deck({
-  count: 2,
+  multiply: 2,
   extend: [
     {rank: "joker", suit: "black"},
     {rank: "joker", suit: "red"},

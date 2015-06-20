@@ -8,9 +8,9 @@ class Deck
 
     @opt.extend ?= []
 
-    @opt.count ?= 1
-    if @opt.count < 1
-      @opt.count = 1
+    @opt.multiply ?= 1
+    if @opt.multiply < 1
+      @opt.multiply = 1
 
     @shuffle()
 
@@ -30,7 +30,7 @@ class Deck
     @cards = []
     @spent = []
 
-    for i in [1..@opt.count]
+    for i in [1..@opt.multiply]
       for suit in @SUITS
         for rank in @RANKS
           @cards.push
