@@ -17,28 +17,38 @@ class Deck
   count: =>
     # How many cards are in the deck
 
-    @cards.length
+    @_cards.length
 
   last: =>
     # Last drawn card
 
-    @spent[@spent.length-1] || null
+    @_spent[@_spent.length-1] || null
+
+  cards: =>
+    # All cards
+
+    @_cards
+
+  spent: =>
+    # All drawn cards
+
+    @_spent
 
   shuffle: =>
     # Prepare cards
 
-    @cards = []
-    @spent = []
+    @_cards = []
+    @_spent = []
 
     for i in [1..@opt.count]
       for suit in @SUITS
         for rank in @RANKS
-          @cards.push
+          @_cards.push
             suit: suit
             rank: rank
       for card in @opt.extend
         unless card.limit and i > card.limit
-          @cards.push
+          @_cards.push
             suit: card.suit
             rank: card.rank
 
@@ -48,7 +58,7 @@ class Deck
     # Pick a card
 
     i = @_random()
-    @cards[i] || null
+    @_cards[i] || null
 
   draw: =>
     # Draw a card
@@ -56,9 +66,9 @@ class Deck
     i = @_random()
     card = null
     if i > -1
-      card = @cards.splice(i, 1)[0] || null
+      card = @_cards.splice(i, 1)[0] || null
     if card
-      @spent.push card
+      @_spent.push card
     card
 
   _random: =>
