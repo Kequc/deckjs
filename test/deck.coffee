@@ -23,7 +23,6 @@ describe 'deck.js', ->
         card = deck.draw()
         expect(card).to.have.all.keys('suit', 'rank')
         expect(deck.cards).to.not.contain(card)
-        true
       expect(deck.draw()).to.be.null
       expect(deck.cards.length).to.equal(0)
 
@@ -43,7 +42,6 @@ describe 'deck.js', ->
       for i in [52..1]
         expect(deck.count()).to.equal(i)
         deck.draw()
-        true
       expect(deck.count()).to.equal(0)
       deck.draw()
       expect(deck.count()).to.equal(0)
@@ -60,11 +58,9 @@ describe 'deck.js', ->
       for i in [-2..1]
         deck = new Deck({multiply: i})
         expect(deck.count()).to.equal(52)
-        true
       for i in [2..5]
         deck = new Deck({multiply: i})
         expect(deck.count()).to.equal(52 * i)
-        true
 
     it 'extends the deck', ->
       deck = new Deck({
@@ -84,7 +80,6 @@ describe 'deck.js', ->
           found[1]++
         if card.rank == "blank" and card.suit == "none"
           found[2]++
-        true
       expect(found).to.eql([3,3,1])
 
     it 'modifies the deck', ->
@@ -99,4 +94,3 @@ describe 'deck.js', ->
         card = deck.draw()
         expect(suits).to.contain(card.suit)
         expect(ranks).to.contain(card.rank)
-        true
