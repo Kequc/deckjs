@@ -49,7 +49,7 @@ Cards which are added to the deck are expected have both rank and suit.
 
 ### Options
 
-Deck accepts options:
+New decks accept options:
 ```javascript
 var deck = new Deck({
   extend: [
