@@ -45,10 +45,10 @@ class Deck
     else
       null
 
-  inlay: (card={}) =>
+  inlay: (card) =>
     # Add card to deck
 
-    if card.suit and card.rank
+    if card and card.suit and card.rank
       card =
         suit: card.suit
         rank: card.rank

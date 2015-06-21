@@ -44,17 +44,20 @@ deck.inlay(card);
 #=> { rank: "6", suit: "hearts" }
 ```
 
+Cards which are added to the deck are expected have both rank and suit.
+
+
 ### Options
 
 Deck accepts options:
 ```javascript
 var deck = new Deck({
-  multiply: 2,
   extend: [
     { rank: "joker", suit: "black" },
     { rank: "joker", suit: "red" },
     { rank: "blank", suit: "none", limit: 1 }
-  ]
+  ],
+  multiply: 2
 });
 ```
 
@@ -67,18 +70,18 @@ This deck has:
 
 ### Cards
 
-By default your deck will consist of 52 cards with the following suits and ranks:
+By default your deck will consist of 52 cards with the following ranks and suits:
 
 ```
-spades hearts diamonds clubs
 ace king queen jack 10 9 8 7 6 5 4 3 2
+spades hearts diamonds clubs
 ```
 
 Override if desired:
 ```javascript
 var deck = new Deck({
-  suits: ["spades", "diamonds", "clubs"],
-  ranks: ["raccoon", "10", "9", "8", "7", "6", "5", "4", "3", "2"]
+  ranks: ["raccoon", "10", "9", "8", "7", "6", "5", "4", "3", "2"],
+  suits: ["spades", "diamonds", "clubs"]
 });
 deck.count();
 #=> 30
