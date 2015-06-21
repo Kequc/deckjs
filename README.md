@@ -16,7 +16,7 @@ var deck = new Deck();
 
 Draw a card:
 ```javascript
-deck.draw();
+var card = deck.draw();
 #=> { rank: "10", suit: "clubs" }
 ```
 
@@ -32,16 +32,15 @@ deck.count();
 #=> 51
 ```
 
+Return a card to the deck so that it can be drawn again:
+```javascript
+deck.inlay(card);
+#=> { rank: "10", suit: "clubs" }
+```
+
 Reset:
 ```javascript
 deck.shuffle();
-```
-
-Return a card to the deck so that it can be drawn again:
-```javascript
-var card = deck.draw();
-deck.inlay(card);
-#=> { rank: "6", suit: "hearts" }
 ```
 
 Cards which are added to the deck are expected have both rank and suit.
